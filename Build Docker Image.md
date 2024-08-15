@@ -20,7 +20,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
-
+5. Command to initate build - `mvn spring-boot:build-image`
 
 # Steps to build Docker image using google jib
 
@@ -36,6 +36,18 @@
 				<version>3.4.2</version>
 				<configuration>
 
+				<!-- Incase you encounter - The configured platforms don't match the Docker Engine's OS and architecture (linux/arm64) -->
+
+				<from>
+					<platforms>
+						<platform>
+							<architecture>arm64</architecture>
+							<os>linux</os>
+						</platform>
+					</platforms>
+				</from>
+				<!-- TIll HERE FOR ERROR-->
+
                 <!-- BELOW TAG TO BE ADDED -->
 					<to>
 						<image>vijaydahiya/${project.artifactId}:s6</image>
@@ -46,3 +58,6 @@
 			</plugin>
 		</plugins>
 ```
+
+
+4. Command to initate build - `mvn compile jib:dockerBuild`
